@@ -1,0 +1,10 @@
+@import url("header.css");
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+header {
+  margin: 10% auto;
+  text-align: center;
+}
