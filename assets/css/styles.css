@@ -8,3 +8,62 @@ header {
   margin: 10% auto;
   text-align: center;
 }
+
+#buttons {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  width: 30%;
+}
+
+input {
+  display: inline-block;
+  margin: 0 auto;
+}
+
+#onlineHeader, #offlineHeader {
+  text-align: center;
+}
+
+#online, #offline {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  width: 50%;
+}
+
+#ownChannel {
+  text-align: center;
+}
+
+#getChannel {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  text-align: center;
+  width: 25%;
+}
+#getUserChannel {
+  margin: 0;
+  padding: 0;
+  width: 196px;
+}
+
+#userChannel {
+  width: 200px;
+}
+
+@media screen and (max-width: 640px) {
+  #online, #offline {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+img {
+  width: 100px;
+  height: 100px;
+}

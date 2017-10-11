@@ -26,10 +26,25 @@
   <header>
     <h1>TwitchTV Streamers</h1>
   </header>
-  <secion>
-    <input id="get" type="submit" value="Get Streams">
-    <div id="streams"></div>
+  <secion id="buttons">
+    <input id="getAll" type="submit" value="Get All">
+    <input id="getOnline" type="submit" value="Get Online">
+    <input id="getOffline" type="submit" value="Get Offline">
   </secion>
+    <div id="onlineHeader"></div>
+    <div id="online"></div>
+    <div id="offlineHeader"></div>
+    <div id="offline"></div>
+
+  <section id="ownChannel">
+    <h2>Have a favorite streaming channel?</h2>
+    <h3>Input the channel name below</h3>
+    <div id="getChannel">
+      <input id="getUserChannel" type="text" placeholder="Channel Name">
+      <input id="userChannel" type="submit" value="Get My Channel">
+      <div id="userStreams"></div>
+    </div>
+  </section>
   <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
