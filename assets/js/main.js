@@ -46,6 +46,7 @@ channel: '',
     $('#onlineHeader').empty();
     $('#offlineHeader').empty();
     $('#online').empty();
+    $('#offline').empty();
     $('#onlineHeader').append('<h2>Online Streams</h2>');
     GetterObj.arr.forEach(function(el, i) {
       $.ajax({
@@ -70,6 +71,7 @@ channel: '',
   function getOfflineStreams(data) {
     $('#onlineHeader').empty();
     $('#offlineHeader').empty();
+    $('#online').empty();
     $('#offline').empty();
     $('#offlineHeader').append('<h2>Offline Streams</h2>');
     GetterObj.arr.forEach(function(el, i) {
