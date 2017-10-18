@@ -8,15 +8,14 @@ arr: [
       "habathcx",
       "RobotCaleb",
       "noobs2ninjas"
-    ]
+    ],
+channel: '',
 }
 
-var channel = '';
-var userDefinedChannels = {
-  arr: ["ESL_SC2"]
-}
 
   function getAllStreams(data) {
+    $('#onlineHeader').empty();
+    $('#offlineHeader').empty();
     $('#onlineHeader').append('<h2>Online Streams</h2>');
     $('#offlineHeader').append('<h2>Offline Streams</h2>');
     $('#online').empty();
@@ -44,7 +43,10 @@ var userDefinedChannels = {
     })
   }
   function getOnlineStreams(data) {
-    $('#streamChoice').empty();
+    $('#onlineHeader').empty();
+    $('#offlineHeader').empty();
+    $('#online').empty();
+    $('#onlineHeader').append('<h2>Online Streams</h2>');
     GetterObj.arr.forEach(function(el, i) {
       $.ajax({
         method: 'GET',
@@ -54,9 +56,10 @@ var userDefinedChannels = {
       .done(function(data){
         if (data.stream != null) {
           console.log(data);
-          $('#streamChoice').append(`<img src='${data.stream.channel.logo}'</img>`);
-          $('#streamChoice').append('<p>' + data.stream.channel.game + '</p>');
-          $('#streamChoice').append(`<a href='${data.stream.channel.url}'>${el}</a>`);
+          $('#online').append(`<ul class=list${i}></ul>`);
+          $(`.list${i}`).append(`<img src='${data.stream.channel.logo}'</img>`);
+          $(`.list${i}`).append('<p>' + data.stream.channel.game + '</p>');
+          $(`.list${i}`).append(`<a href='${data.stream.channel.url}'>${el}</a>`);;
         }
       })
       .fail(function(){
@@ -65,7 +68,10 @@ var userDefinedChannels = {
     })
   }
   function getOfflineStreams(data) {
-    $('#streamChoice').empty();
+    $('#onlineHeader').empty();
+    $('#offlineHeader').empty();
+    $('#offline').empty();
+    $('#offlineHeader').append('<h2>Offline Streams</h2>');
     GetterObj.arr.forEach(function(el, i) {
       $.ajax({
         method: 'GET',
@@ -75,9 +81,8 @@ var userDefinedChannels = {
       .done(function(data){
         if (data.stream == null) {
           console.log(data);
-          // $('#offlineStreams').append(`<img src='${data.stream.channel.logo}'</img>`);
-          // $('#offlineStreams').append('<p>' + data.stream.channel.game + '</p>');
-          $('#streamChoice').append(`<a href='https://www.twitch.tv/${el}'>${el}</a>`);
+          $('#offline').append(`<ul class=list${i}></ul>`);
+          $(`.list${i}`).append(`<a href='https://www.twitch.tv/${el}'>${el}</a>`);
         }
       })
       .fail(function(){
@@ -87,25 +92,31 @@ var userDefinedChannels = {
   }
 
   function checkChannelArray(el) {
-    return el == channel;
+    return el == GetterObj.channel;
   }
 
   function getChannelData() {
-    $('#userStreams').empty();
-    userDefinedChannels.arr.forEach(function(el, i) {
+    $('#online').empty();
+    $('#offline').empty();
+    $('#onlineHeader').empty();
+    $('#offlineHeader').empty();
+    $('#onlineHeader').append('<h2>Online Streams</h2>');
+    $('#offlineHeader').append('<h2>Offline Streams</h2>');
+    GetterObj.arr.forEach(function(el, i) {
       $.ajax({
         method: 'GET',
-        url: `https://wind-bow.gomix.me/twitch-api/streams/${userDefinedChannels.arr[i]}?callback=?`,
+        url: `https://wind-bow.gomix.me/twitch-api/streams/${GetterObj.arr[i]}?callback=?`,
         dataType: 'jsonp'
       })
       .done(function(data){
         if (data.stream != null) {
           console.log(data);
-          $('#userStreams').append(`<img src='${data.stream.channel.logo}'</img>`);
-          $('#userStreams').append('<p>' + data.stream.channel.game + '</p>');
-          $('#userStreams').append(`<a href='${data.stream.channel.url}'>${el}</a>`);
+          $('#online').append(`<ul class=list${i}></ul>`);
+          $(`.list${i}`).append(`<img src='${data.stream.channel.logo}'</img>`);
+          $(`.list${i}`).append('<p>' + data.stream.channel.game + '</p>');
+          $(`.list${i}`).append(`<a href='${data.stream.channel.url}'>${el}</a>`);
         } else {
-          $('#userStreams').append(`<ul class=list${i}></ul>`);
+          $('#offline').append(`<ul class=list${i}></ul>`);
           $(`.list${i}`).append(`<a href='https://www.twitch.tv/${el}'>${el}</a>`);
         }
       })
@@ -115,11 +126,11 @@ var userDefinedChannels = {
     })
   }
   function getUserChannels(data) {
-    var arr = userDefinedChannels.arr;
+    var arr = GetterObj.arr;
     if (arr.every(checkChannelArray)) {
       getChannelData();
     } else {
-      arr.push(channel);
+      arr.push(GetterObj.channel);
       getChannelData();
     }
   }
@@ -137,25 +148,25 @@ $(document).ready(function(){
     getOfflineStreams();
   })
   $('#userChannel').on('click', function(e){
-    channel = $('#getUserChannel').val();
-    if (channel != '') {
+    GetterObj.channel = $('#getUserChannel').val();
+    if (GetterObj.channel != '') {
       e.preventDefault();
-      channel = $('#getUserChannel').val();
+      GetterObj.channel = $('#getUserChannel').val();
       getUserChannels();
       $('#getUserChannel').val('');
-      channel = '';
+      GetterObj.channel = '';
     } else {
       e.preventDefault();
     }
   })
   $('#getUserChannel').on('keyup', function(e){
-    channel = $('#getUserChannel').val();
-    if (channel != '' && e.which == 13) {
+    GetterObj.channel = $('#getUserChannel').val();
+    if (GetterObj.channel != '' && e.which == 13) {
       e.preventDefault();
       channel = $('#getUserChannel').val();
       getUserChannels();
       $('#getUserChannel').val('');
-      channel = '';
+      GetterObj.channel = '';
     } else {
       e.preventDefault();
     }

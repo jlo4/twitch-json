@@ -28,11 +28,11 @@ nav > ul > li {
 .left {
 	display: flex;
 	flex-direction: row;
-	width: 25%;
+	width: 35%;
 }
 
 .left > li {
-	padding: 2% 0 0 0;
+	padding: 1% 0 0 0;
 }
 
 .left > li:last-child {
@@ -40,7 +40,7 @@ nav > ul > li {
 }
 
 .right > li {
-	 padding: 2% 15% 0 0;
+	 padding: 1% 15% 0 0;
 }
 
 nav > ul > li > a {
@@ -56,7 +56,8 @@ nav > ul > li > a {
 .dropdown {
 	display: flex;
 	flex-direction: row;
-	justify-content: flex-end;
+	margin: 1.2% 5% 0 0;
+	width: 30%;
 }
 
 @media screen and (max-width: 920px) {
@@ -66,6 +67,14 @@ nav > ul > li > a {
 
 	.left {
 		display: none;
+	}
+
+	.dropdown {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		margin: 1.2% 5% 0 0;
+		width: 40%;
 	}
 }
 

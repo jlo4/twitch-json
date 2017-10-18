@@ -9,6 +9,10 @@ header {
   text-align: center;
 }
 
+h1 {
+  font-size: 48px;
+}
+
 #buttons {
   display: flex;
   flex-direction: row;
@@ -18,20 +22,69 @@ header {
 
 input {
   display: inline-block;
-  margin: 0 auto;
+  margin: 5% auto;
+  padding: 1.5%;
 }
 
-#onlineHeader, #offlineHeader {
+#onlineStreams {
+  height: 80%;
+}
+
+#onlineHeader {
   text-align: center;
 }
 
-#online, #offline {
+#offlineHeader {
+  margin: 5% 0 5% 0;
+  text-align: center;
+}
+
+#online {
+  align-items: center;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   margin: 0 auto;
-  width: 50%;
+  width: 75%;
 }
+
+#offline {
+   align-items: center;
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   margin: 0 auto 15% auto;
+   width: 75%;
+}
+
+  #online > ul > img {
+    heigt: 70%;
+    width: 70%;
+    padding: 15% 15% 0 15%;
+  }
+
+  #online > ul > p {
+    margin: 0 auto;
+    padding: 5% 15% 0 15%;
+  }
+
+  #online > ul > a {
+    margin: 0 auto;
+    padding: 5% 15% 15% 15%;
+  }
+
+ul[class^='list'] {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  background: #d3d3d3;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0;
+  width: 18%;
+}
+
 
 #ownChannel {
   text-align: center;
@@ -41,29 +94,30 @@ input {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
   margin: 0 auto;
-  text-align: center;
   width: 25%;
 }
 #getUserChannel {
   margin: 0;
-  padding: 0;
-  width: 196px;
+  padding: 1.5%;
+  width: 100%;
 }
 
 #userChannel {
   width: 200px;
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 920px) {
+  h1 {
+    font-size: 32px;
+  }
+}
+
+@media screen and (device-aspect-ratio: 40/71) and (max-device-width: 640px) {
   #online, #offline {
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
-}
-
-img {
-  width: 100px;
-  height: 100px;
 }
